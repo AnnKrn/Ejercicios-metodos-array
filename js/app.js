@@ -8,6 +8,10 @@
  * ejem: capitalize("whoop") --->  "WHOOP" */
 
 var capitalize = function(str) {
+  // console.log(str)
+  str.map(function(s) {
+    console.log(s);
+  })
   //Escribe tu codigo aqui
   // No puedes utilizar directamente sobre str toUpperCase
 
@@ -73,7 +77,7 @@ var oddNumbers = function(array) {
 };
 
 var outputOdd = oddNumbers(numberArray);
-console.log(outputOddNumbers); // ---> [1, 3, 5, 7, 9]
+console.log(outputOdd); // ---> [1, 3, 5, 7, 9]
 
 
 // 6. Reducer
@@ -109,14 +113,52 @@ var persons = [
   {id : 5, name : "Alex", tags : "java"}
 ];
 
-// 8. Render in DOM
-/*Usando la data anterior y alguno de los métodos, pinta en el index.html a través del DOM
- cada una de las personas y todas sus propiedades */
+var filterData = function (array) {
+  var newArray = array.filter(function(item){
+    // filter, si es true lo devuelve si no, no
+    // poner el return para regresar los elemntos que cumplen la condicion
+    return item.tags === 'javascript'
+    
+    console.log(item)
+  })
 
-var paintPersons = function() {
-
+  console.log(array)
 }
 
+filterData(persons)
+// 8. Render in DOM
+/*Usando la data anterior y alguno de los métodos, pinta en el index.html a través del DOM
+cada una de las personas y todas sus propiedades */
+// contenedor donde se pintara
+var container = document.getElementById('container');
+
+// poner el array que se va a manipular como parametro
+var paintPersons = function (array) {
+// item es cada elemento del array
+  array.forEach(function (item) {
+
+    var person = document.createElement('div');
+    var name = document.createElement('h3');
+    var id = document.createElement('p');
+    var tags = document.createElement('p');
+
+    name.innerText = item.name
+    id.innerText = item.id
+    tags.innerText = item.tags
+
+    person.appendChild(name)
+
+    container.appendChild(person)
+    
+
+    
+    
+    
+    console.log(item.id)
+  });
+}
+
+paintPersons(persons);
 var outputPaintPerson = paintPersons(persons);
   
 // 9. Total de edad en 'años perro' 
